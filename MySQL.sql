@@ -22,7 +22,7 @@ CREATE TABLE tbHardware(
 CREATE TABLE tbVendas(
 	pk_idVenda INT PRIMARY KEY AUTO_INCREMENT,
 	fk_idCliente INT NOT NULL REFERENCES tbClientes(pk_idCliente),
-	data DATE NOT NULL,
+	data DATETIME NOT NULL,
 	valorTotal DECIMAL(8,2),
 	desconto DECIMAL (8,2),
 	valorPago DECIMAL (8,2)
