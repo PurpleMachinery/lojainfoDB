@@ -4,18 +4,18 @@ CREATE DATABASE IF NOT EXISTS lojainfo;
 USE lojainfo;
 CREATE TABLE tbClientes(
 	pk_idCliente INT PRIMARY KEY AUTO_INCREMENT,
-	nome NVARCHAR(50),
-	endereco NVARCHAR(100),
-	fone NVARCHAR(15),
-	email NVARCHAR(70)
+	nome NVARCHAR(50) NOT NULL,
+	endereco NVARCHAR(100) NOT NULL,
+	fone NVARCHAR(15) NOT NULL,
+	email NVARCHAR(70) NOT NULL
 );
 
 CREATE TABLE tbHardware(
 	pk_idHardware INT PRIMARY KEY AUTO_INCREMENT,
-	descricao NVARCHAR(50),
-	precoUnit DECIMAL,
-	qtdAtual INT,
-	qtdMinima INT
+	descricao NVARCHAR(50) NOT NULL,
+	precoUnit DECIMAL NOT NULL,
+	qtdAtual INT NOT NULL, 
+	qtdMinima INT NOT NULL
 	#img IMAGE DEFAULT NULL
 );
 
@@ -23,9 +23,8 @@ CREATE TABLE tbVendas(
 	pk_idVenda INT PRIMARY KEY AUTO_INCREMENT,
 	fk_idCliente INT NOT NULL REFERENCES tbClientes(pk_idCliente),
 	data DATETIME NOT NULL,
-	valorTotal DECIMAL(8,2),
-	desconto DECIMAL (8,2),
-	valorPago DECIMAL (8,2)
+	valorTotal DECIMAL(8,2) NOT NULL,
+	desconto DECIMAL (8,2) NOT NULL
 );
 
 CREATE TABLE tbItensVenda(
@@ -33,10 +32,8 @@ CREATE TABLE tbItensVenda(
 	fk_idVenda INT NOT NULL REFERENCES tbVendas(pk_idVenda),
 	fk_idHardware INT NOT NULL  REFERENCES tbHardware(pk_idHardware),
 	qtde INT NOT NULL,
-	totalItem Decimal(8,2)
+	totalItem Decimal(8,2) NOT NULL
 );
-
-USE lojainfo;
 
 /*SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME LIKE '%'
 
